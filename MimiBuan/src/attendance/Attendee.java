@@ -20,7 +20,8 @@ public interface Attendee {
 	//returns the lastNameName
 	String getLastName();
 
-	//returns true if 'first' and 'last' match this Attendee's firstName and lastName. This should NOT be case sensitive. 
+	//returns true if 'first' and 'last' match this Attendee's firstName and lastName. This should NOT be case sensitive.
+	//Edit: JUST the last name
 	boolean mathces(String first, String last);
 
 	
