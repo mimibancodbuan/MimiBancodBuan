@@ -86,13 +86,13 @@ public class Student implements Attendee {
 	}
 	
 	// replace w/ "..." if longer than 20 characters
-	public String shortenName(String s, int length) {
-		if (s.length()>length) {
-			s = s.substring(0,17)+"...";
-		}
-		while(s.length()<length) {
-			s += " ";
-		}
-		return s;
+	public String shortenName(String s1, int strlength) {
+		if (s1.length()>strlength)
+			s1 = s1.substring(0,17)+"...";
+		
+		while(s1.length()<strlength)
+			s1 += " ";
+
+		return s1;
 	}
 }
