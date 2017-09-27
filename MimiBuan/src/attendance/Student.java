@@ -2,43 +2,86 @@ package attendance;
 
 public class Student implements Attendee {
 	
-	private String first;
-	private String last;
+	private String firstName;
+	private String lastName;
+	private boolean studentPresent;
 	
 	public Student (String firstName, String lastName){
-		String first = firstName;
-		String last = lastName;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.studentPresent = false;
 	}
 
 	public boolean isPresent() {
-		if (student )
+		return studentPresent;
+	}
+
+	public void setPresent(boolean present) {
+		studentPresent = present;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public boolean mathces(String inputFirst, String inputLast) {
+		
+		String firstLower = inputFirst.toLowerCase();
+		String lastLower = inputLast.toLowerCase();
+		
+		String tempFirstName = firstName.toLowerCase();
+		String tempLastName = lastName.toLowerCase();
+		
+		if (firstLower.equals(tempFirstName) && lastLower.equals(tempLastName))
 			return true;
 		else
 			return false;
 	}
 
-	public void setPresent(boolean present) {
-
-	}
-
-	public String getFirstName() {
-		return first;
-	}
-
-	public String getLastName() {
-		return last;
-	}
-
-	public boolean mathces(String first, String last) {
-		return false;
-	}
-
-	public boolean matches(String last) {
-		return false;
+	public boolean matches(String inputLast) {
+		String lastLower = inputLast.toLowerCase();
+		String tempLastName = lastName.toLowerCase();
+		
+		if (lastLower.equals(tempLastName))
+			return true;
+		else
+			return false;
 	}
 
 	public String getReportString() {
-		return null;
+		String result;
+		
+		char[]arr = new char[40];
+		
+		// last name
+		for (int i=0; i<20; i++) {
+			if(i<lastName.length())
+				arr[i]=lastName.charAt(i);
+			else
+				arr[i]=' ';
+		}
+		
+		// first name
+		for (int i=0; i<20; i++) {
+			if(i<firstName.length())
+				arr[i+20]=firstName.charAt(i);
+			else
+				arr[i+20]=' ';
+		}
+		
+		// present or absent
+		String presString;
+		if(studentPresent)
+			presString = "PRESENT\n";
+		else
+			presString = "ABSENT\n";
+		
+		result = String.valueOf(arr) + presString;
+		
+		return result;
 	}
-
 }
