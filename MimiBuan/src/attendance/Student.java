@@ -85,6 +85,7 @@ public class Student implements Attendee {
 		return result;
 	}
 	
+	// replace w/ "..." if longer than 20 characters
 	public String shortenName(String s, int length) {
 		if (s.length()>length) {
 			s = s.substring(0,17)+"...";
