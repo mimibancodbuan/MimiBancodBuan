@@ -84,4 +84,14 @@ public class Student implements Attendee {
 		
 		return result;
 	}
+	
+	public String shortenName(String s, int length) {
+		if (s.length()>length) {
+			s = s.substring(0,17)+"...";
+		}
+		while(s.length()<length) {
+			s += " ";
+		}
+		return s;
+	}
 }
