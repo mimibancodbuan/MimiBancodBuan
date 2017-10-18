@@ -68,6 +68,11 @@ public class ArraysMain {
 	public int[] longestConsecSeqAndPos(int[] arr) {
 		int[] data = new int[2];
 		return data;
+		
+		int[] output = new int [longestConsecutiveSequence(arr)];
+		for(int i = 0; i < longestConsecutiveSequence(arr); i++)
+			output[i] = arr[isInSequence(arr) + i];
+		return output;
 	}
 	
 	/*
