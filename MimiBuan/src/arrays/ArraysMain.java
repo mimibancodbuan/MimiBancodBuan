@@ -96,7 +96,7 @@ public class ArraysMain {
 	}
 	
 	/*
-	 * moves the front to the back repeatedly, exavtly n times
+	 * moves the front to the back repeatedly, exactly n times
 	 * @param arr
 	 * @param n
 	*/

@@ -1,16 +1,78 @@
 package arrays;
 
+import java.util.Arrays;
+
 public class ObjectArrays {
 
 	public ObjectArrays() {
-		Object[] people = new Object[20];
+		Person[] people = new Person[20];
 		populate(people);
-		people[0] = new Thing("coffee maker");
-		for(Object p: people)
-			System.out.println(p);
+		
+		for(Person p: people) {
+			p.mingle(people);
+			p.printFriends();
+			System.out.println("");
+		}
+	}
+	
+	public Person[] selectGroup(Person[] population, int length) {
+		// returns a random subgroup of person from population with no repeats, length "length"
+		Person[] group = new Person[length];
+		group[0] = selectAPerson(population);
+		
+		for(int i = 1; i < length; i++) {
+			Person nextPerson = selectAPerson(population);
+			
+			while(personInGroup(group, nextPerson)) {
+				nextPerson = selectAPerson(population);
+			}
+			group[i] = nextPerson;
+		}
+		
+		return group;
+	}
+	
+	/*
+	 * return the number of differences between the two arrays
+	 * A "difference" means they don't have the same element at the same position
+	 * PRECONDITION: the two arrays have the same length
+	 * @param arr1
+	 * @param arr2
+	 * @return
+	*/
+	public double countDifferences(Person[] arr1, Person[] arr2) {
+		int count = 0;
+		for(int i = 0; i < arr1.length; i++) {
+			if(arr2[i] != arr1[i])
+				count++;
+		}
+		return count;
+	}
+	
+	/*
+	 * calls count differences on two Person arrays,
+	 * each array must contain the same elements, but randomly ordered
+	 * Print the number of differences between the two arrays
+	 * Do this 100 times, print the average (hint: average needs to be a double)
+	*/
+	public void testShuffling() {
+		
 	}
 
-	private void populate(Object[] people) {
+	public static boolean personInGroup(Person[] group, Person nextPerson) {
+		for(int i = 0; i < group.length; i++) {
+			if(group[i] == nextPerson)
+				return true;
+		}
+		return false;
+	}
+
+	private Person selectAPerson(Person[] population) {
+		int randomNum = (int)(Math.random()*population.length);
+		return population[randomNum];
+	}
+
+	private void populate(Person[] people) {
 		for(int i = 0; i < people.length; i++) {
 			String firstName = randomNameFrom(Person.FIRST_START, Person.FIRST_MIDDLE, Person.FIRST_END);
 			String lastName = randomNameFrom(Person.LAST_START, Person.LAST_MIDDLE, Person.LAST_END);
