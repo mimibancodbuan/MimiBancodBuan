@@ -25,7 +25,7 @@ public class CaveRoom {
 		
 		// note: by default, arrays will populate with 'null' meaning there are no connections
 		borderingRooms = new CaveRoom[4];
-		doors = newDoor[4];\
+		doors = newDoor[4];
 		setDirections();
 	}
 
