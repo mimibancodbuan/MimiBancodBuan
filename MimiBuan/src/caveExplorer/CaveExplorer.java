@@ -9,6 +9,7 @@ public class CaveExplorer {
 	public static CaveRoom currentRoom; // changes based on how the user navigated
 	public static Inventory inventory; // where all objects found in cave are kept
 	public static boolean playing = true;
+	public static NPC[] npcs;
 	
 	public static void main(String[] args) {
 		in = new Scanner(System.in);
@@ -20,6 +21,7 @@ public class CaveExplorer {
 
 	private static void startExploring() {
 		while(playing) {
+			npcActions();
 			print(inventory.getDescription());
 			print(currentRoom.getDescription());
 			print(currentRoom.getDescription());
@@ -29,6 +31,12 @@ public class CaveExplorer {
 		}
 	}
 	
+	private static void npcActions() {
+		for(NPC n: npcs)
+			n.act();
+		inventory.updateMap();
+	}
+
 	public static void print(String s) {
 		// NOTE: later, you can replace this line with the more sophisticated "multiLinePrint" from Chatbot
 		System.out.println(s);
