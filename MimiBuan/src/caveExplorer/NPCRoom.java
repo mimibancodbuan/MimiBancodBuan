@@ -14,7 +14,7 @@ public class NPCRoom extends CaveRoom {
 	 * @return
 	 */
 	public boolean canEnter() {
-		return presentNPC == null;
+		return presentNPC != null;
 	}
 	
 	public void enterNPC(NPC m) {
@@ -69,8 +69,12 @@ public class NPCRoom extends CaveRoom {
 	public String getDescription() {
 		if(containsNPC() && !presentNPC.isActive())
 			return super.getDescription() + "\n" + presentNPC.getInactiveDescription();
-		else
-			return super.getDescription() + "\n" + presentNPC.getActiveDescription();
+		else {
+			String npcDesc = "";
+			if(presentNPC != null)
+				npcDesc = presentNPC.getActiveDescription();
+			return super.getDescription() + "\n" + npcDesc;
+		}
 	}
 	
 }
