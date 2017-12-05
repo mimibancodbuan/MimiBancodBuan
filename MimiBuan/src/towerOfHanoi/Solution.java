@@ -2,24 +2,21 @@ package towerOfHanoi;
 
 public class Solution {
 	
-	private int n;
-	private String start;
-	private String helper;
-	private String end;
-	
-	public Solution(){
-		int n = 0;
-		this.start = "";
-		this.helper = "";
-		this.end = "";
+	public static void main(String[] args){
+		int n = 5;
+		String start = "A";
+		String helper = "B";
+		String end = "C";
+		towerSolution(n, start, helper, end);
 	}
 
-	public void towerSolution(int n, String start, String helper, String end){
+	public static void towerSolution(int n, String start, String helper, String end){
 		if(n == 1)
-			System.out.println(start + "->" + end);
+			System.out.println(start + " -> " + end);
 		else if(n > 1) {
+			// move everything above the bottom disc
 			towerSolution(n-1, start, end, helper);
-			towerSolution(1, start, helper, end);
+			System.out.println(start + " -> " + end);
 			towerSolution(n-1, helper, start, end);
 		}
 	}
