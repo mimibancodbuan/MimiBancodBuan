@@ -5,6 +5,8 @@ import java.util.Scanner;
 
 public class LightsOut {
 	
+	//lights out
+	
 	int[][] grid;
 	
 	public LightsOut(){
